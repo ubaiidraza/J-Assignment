@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Entry Form</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  
+  <script>
+    // --- Modal open/close functions ---
+    function openLeadModal() {
+      document.getElementById('leadModal').classList.remove('hidden');
+      document.getElementById('leadModal').classList.add('flex');
+    }
+
+    function closeLeadModal() {
+      document.getElementById('leadModal').classList.add('hidden');
+      document.getElementById('leadModal').classList.remove('flex');
+    }
+
+    // --- Save the lead name (example logic) ---
+    function saveLeadName() {
+      const leadNameValue = document.getElementById('leadNameInput').value;
+      console.log('Lead Name Saved:', leadNameValue);
+
+      // Yahan par ap apna data store/update kar sakte ho
+      // e.g. UI me dikhana, server pe save karna, etc.
+
+      // Save ke baad modal close
+      closeLeadModal();
+    }
+    
+
+    
+  </script>
+</head>
+
+<body class="bg-gray-100 p-6">
+  <div class="bg-white shadow-lg p-4 rounded-lg">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center border-b pb-2">
+      <h2 class="text-lg font-semibold text-gray-700">Customer Entry Form</h2>
+      <div class="flex items-center gap-4">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2 shadow">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </button>
+        <a href="Index.html">
+          <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2 shadow">
+            Customer List
+          </button>
+        </a>
+        <div class="flex items-center gap-2 border px-3 py-2 rounded">
+          <span class="text-gray-700">Date:</span>
+          <input type="date" class="border-none focus:ring-0 text-gray-700 bg-transparent">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs Section -->
+    <div class="flex border-b mt-4">
+      <button class="text-blue-500 px-4 py-2 border-b-2 border-blue-500 font-semibold">
+        Personal Information
+      </button>
+      <button class="text-gray-500 px-4 py-2">Contact/Reference</button>
+      <button class="text-gray-500 px-4 py-2">Work Information</button>
+    </div>
+
+    <!-- Form Section -->
+    <div class="bg-white p-4 shadow-md rounded-lg mt-4">
+      <h3 class="text-lg font-semibold text-gray-700 mb-4">Personal Details</h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <label class="block text-gray-600">ID</label>
+          <input type="text" class="w-full border p-2 rounded bg-gray-200" disabled>
+        </div>
+        <div>
+          <label class="block text-gray-600">Lead</label>
+          <div class="flex gap-2">
+            <select class="w-full border p-2 rounded">
+              <option>Select Lead</option>
+            </select>
+            <!-- Plus button triggers the Lead Modal -->
+            <button 
+              class="bg-green-500 text-white px-2 py-2 rounded"
+              onclick="openLeadModal()"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-600">Name</label>
+          <input type="text" class="w-full border p-2 rounded">
+          
+        </div>
+        <div>
+          <label class="block text-gray-600">Father</label>
+          <input type="text" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block text-gray-600">Cast</label>
+          <div class="flex gap-2">
+            <select class="w-full border p-2 rounded">
+              <option>Select Cast</option>
+            </select>
+           <!-- Plus button triggers the Lead Modal -->
+           <button 
+           class="bg-green-500 text-white px-2 py-2 rounded"
+           onclick="openLeadModal()"
+         >
+           <i class="fas fa-plus"></i>
+         </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-600">Religion</label>
+          <div class="flex gap-2">
+            <select class="w-full border p-2 rounded">
+              <option>Select Religion</option>
+            </select>
+           <!-- Plus button triggers the Lead Modal -->
+            <button 
+              class="bg-green-500 text-white px-2 py-2 rounded"
+              onclick="openLeadModal()"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAD MODAL (hidden by default) -->
+  <div 
+    id="leadModal" 
+    class="fixed inset-0 hidden items-center justify-center bg-gray-800 bg-opacity-50"
+  >
+    <div class="bg-white w-96 rounded shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Add New Lead</h2>
+      <label class="block mb-1 text-gray-700">Name</label>
+      <input 
+        type="text" 
+        id="leadNameInput" 
+        placeholder="Enter new lead name" 
+        class="w-full border border-gray-300 rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <div class="flex justify-end gap-2">
+        <button 
+          class="bg-blue-500 text-white px-4 py-2 rounded" 
+          onclick="saveLeadName()"
+        >
+          OK
+        </button>
+        <button 
+          class="bg-gray-500 text-white px-4 py-2 rounded" 
+          onclick="closeLeadModal()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
