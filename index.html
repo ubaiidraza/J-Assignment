@@ -1,94 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function toggleAdvancedSearch() {
-            document.getElementById("advancedSearchForm").classList.toggle("hidden");
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleAdvancedSearch() {
+      document.getElementById("advancedSearchForm").classList.toggle("hidden");
+    }
+  </script>
+  <style>
+    /* Custom style for the column options panel */
+    #columnOptions {
+      z-index: 50;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 p-6">
-    <div class="bg-white shadow-lg p-4 rounded-lg">
-       
-            <div class="bg-white shadow-lg p-4 rounded-lg">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center gap-4">
-                        <h2 class="text-xl font-bold">Customer List</h2>
-                        <a href="Dashboard.html">
-                            <button class="bg-gray-600 text-white px-4 py-2 rounded flex items-center gap-2">
-                                <i class="fa fa-arrow-left"></i> Back to Dashboard
-                            </button>
-                        </a>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="bg-green-500 text-white px-4 py-2 rounded flex items-center gap-2">
-                            <i class="fa fa-print"></i> Print
-                        </button>
-                        <button class="bg-red-500 text-white px-4 py-2 rounded flex items-center gap-2">
-                            <i class="fa fa-file-pdf"></i> Export PDF
-                        </button>
-                        <button class="bg-gray-700 text-white px-4 py-2 rounded flex items-center gap-2">
-                            <i class="fa fa-columns"></i> Columns
-                        </button>
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2">
-                            <i class="fa fa-plus"></i> Add Customer
-                        </button>
-                    </div>
-                </div>
-            </div>
-        
-        
-        <div class="grid grid-cols-3 gap-4 mb-4 mt-10 ">
-            <input type="text" placeholder="Search by name, email, or company..." class="border p-2 rounded w-full">
-            <input type="text" placeholder="Search by cell number..." class="border p-2 rounded w-full">
-            <input type="text" placeholder="Search by CNIC..." class="border p-2 rounded w-full">
+  <div class="bg-white shadow-lg p-4 rounded-lg relative">
+    <!-- Header Section -->
+    <div class="bg-white shadow-lg p-4 rounded-lg mb-6">
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-4">
+          <h2 class="text-xl font-bold">Customer List</h2>
+          <a href="Customer.html">
+            <button class="bg-gray-600 text-white px-4 py-2 rounded flex items-center gap-2">
+              <i class="fa fa-arrow-left"></i> Back to Dashboard
+            </button>
+          </a>
         </div>
-        
-        <div class="mb-4 ">
-            <button onclick="toggleAdvancedSearch()" class="text-blue-500 flex items-center gap-2"><i class="fa fa-filter"></i> Advanced Search</button>
+        <div class="flex gap-2 relative">
+          <button class="bg-green-500 text-white px-4 py-2 rounded flex items-center gap-2">
+            <i class="fa fa-print"></i> Print
+          </button>
+          <button class="bg-red-500 text-white px-4 py-2 rounded flex items-center gap-2">
+            <i class="fa fa-file-pdf"></i> Export PDF
+          </button>
+          <!-- Columns Button with id -->
+          <button class="bg-gray-700 text-white px-4 py-2 rounded flex items-center gap-2" id="columnsBtn">
+            <i class="fa fa-columns"></i> Columns
+          </button>
+         <a href="Customer.html"> <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2">
+            <i class="fa fa-plus"></i> Add Customer
+          </button></a>
+          <!-- Column Options Panel (Dropdown) -->
+          <div id="columnOptions" class="hidden absolute top-12 right-0 bg-white border shadow p-2 rounded">
+            <!-- Checkboxes will be added dynamically -->
+          </div>
         </div>
-        
-        <div id="advancedSearchForm" class="hidden mb-4 grid grid-cols-3 gap-4">
-            <select class="border p-2 rounded">
-                <option>Select Lead Source</option>
-            </select>
-            <select class="border p-2 rounded">
-                <option>Select Religion</option>
-            </select>
-            <select class="border p-2 rounded">
-                <option>Select Marital Status</option>
-            </select>
-            <input type="date" class="border p-2 rounded">
-            <input type="date" class="border p-2 rounded">
-            <button class="bg-gray-600 text-white px-4 py-2 rounded">Reset Filters</button>
-        </div>
-        
-        <table class="w-full border-collapse border bg-white">
-            <thead>
-                <tr class="bg-gray-200">
-                    <th class="border p-2">Code</th>
-                    <th class="border p-2">Image</th>
-                    <th class="border p-2">Name</th>
-                    <th class="border p-2">Contact</th>
-                    <th class="border p-2">Email</th>
-                    <th class="border p-2">Lead</th>
-                    <th class="border p-2">Religion</th>
-                    <th class="border p-2">Company</th>
-                    <th class="border p-2">Entry Date</th>
-                    <th class="border p-2">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="border p-2 text-center" colspan="10">Showing 1 to 0 of 0 entries</td>
-                </tr>
-            </tbody>
-        </table>
+      </div>
     </div>
+
+    <!-- Search Fields -->
+    <div class="grid grid-cols-3 gap-4 mb-4 mt-10">
+      <input type="text" placeholder="Search by name, email, or company..." class="border p-2 rounded w-full">
+      <input type="text" placeholder="Search by cell number..." class="border p-2 rounded w-full">
+      <input type="text" placeholder="Search by CNIC..." class="border p-2 rounded w-full">
+    </div>
+
+    <div class="mb-4">
+      <button onclick="toggleAdvancedSearch()" class="text-blue-500 flex items-center gap-2">
+        <i class="fa fa-filter"></i> Advanced Search
+      </button>
+    </div>
+
+    <div id="advancedSearchForm" class="hidden mb-4 grid grid-cols-3 gap-4">
+      <select class="border p-2 rounded">
+        <option>Select Lead Source</option>
+      </select>
+      <select class="border p-2 rounded">
+        <option>Select Religion</option>
+      </select>
+      <select class="border p-2 rounded">
+        <option>Select Marital Status</option>
+      </select>
+      <input type="date" class="border p-2 rounded">
+      <input type="date" class="border p-2 rounded">
+      <button class="bg-gray-600 text-white px-4 py-2 rounded">Reset Filters</button>
+    </div>
+
+   <!-- Table -->
+<table class="w-full border border-black border-collapse bg-white" id="customerTable">
+  <thead>
+    <tr class="bg-gray-200 border border-black">
+      <th class="border border-black p-2">ID </th>
+      <th class="border border-black p-2">Date</th>
+      <th class="border border-black p-2">Name</th>
+      <th class="border border-black p-2">Status </th>
+      <th class="border border-black p-2">Cell</th>
+      <th class="border border-black p-2">Category </th>
+      <th class="border border-black p-2">Rent</th>
+      <th class="border border-black p-2">Deposit</th>
+      <th class="border border-black p-2">Beds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border border-black">
+      <td class="border border-black p-2">UID 2025 090</td>
+      <td class="border border-black p-2"><span class="text-muted">No Photo Available</span></td>
+      <td class="border border-black p-2">Usman</td>
+      <td class="border border-black p-2">03253787891</td>
+      <td class="border border-black p-2">mister.tech27@gmail.com</td>
+      <td class="border border-black p-2">Tech</td>
+      <td class="border border-black p-2">Islam</td>
+      <td class="border border-black p-2">XYZ Ltd.</td>
+      <td class="border border-black p-2">14-02-2025</td>
+      <td class="border border-black p-2">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 ml-2 py-1 rounded">
+          <i class="fas fa-eye"></i>
+        </button>
+        <button class="bg-green-500 hover:bg-green-600 text-white ml-2 px-3 py-1 rounded">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 ml-2 py-1 rounded">
+          <i class="fas fa-trash"></i>
+        </button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+  <!-- Custom JavaScript for Column Options -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const columnsBtn = document.getElementById("columnsBtn");
+      const columnOptions = document.getElementById("columnOptions");
+      const table = document.getElementById("customerTable");
+      const headerCells = table.querySelectorAll("thead th");
+  
+      // Populate the columnOptions panel with checkboxes for each column
+      headerCells.forEach((th, index) => {
+        const label = document.createElement("label");
+        label.className = "flex items-center gap-2 p-1 cursor-pointer";
+  
+        // ✅ Fix: Create checkbox element separately
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.dataset.colIndex = index;
+        checkbox.checked = true;
+        checkbox.className = "form-checkbox";
+  
+        // Text node for column name
+        const textNode = document.createTextNode(" " + th.innerText);
+  
+        // Append checkbox and text to label
+        label.appendChild(checkbox);
+        label.appendChild(textNode);
+        columnOptions.appendChild(label);
+  
+        // ✅ Add event listener to toggle column visibility
+        checkbox.addEventListener("change", function () {
+          const colIndex = this.dataset.colIndex;
+          table.querySelectorAll("tr").forEach((row) => {
+            const cell = row.children[colIndex];
+            if (cell) {
+              cell.style.display = this.checked ? "" : "none";
+            }
+          });
+        });
+      });
+  
+      // ✅ Toggle column options panel
+      columnsBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        columnOptions.classList.toggle("hidden");
+      });
+  
+      // ✅ Hide column options when clicking outside
+      document.addEventListener("click", function (e) {
+        if (!columnOptions.contains(e.target) && e.target !== columnsBtn) {
+          columnOptions.classList.add("hidden");
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
