@@ -10,13 +10,13 @@
 <body class="bg-white">
   <div class="container">
     <div class="top-bar">
-        <h1><b>Tenant Entry Form</b></h1>
-        <div>
-            <button class="dashboard-btn">Dashboard</button>
-            <a href="index.html"> <button class="dashboard-btn">Tenant List</button></a>
-            <label for="date">Date:</label>
-            <input class="date" type="date" id="date" />
-        </div>
+      <h1><b>Customer Entry Form</b></h1>
+      <div>
+        <button class="dashboard-btn">Dashboard</button>
+        <a href="index.html"><button class="dashboard-btn">Customer List</button></a>
+        <label for="date">Date:</label>
+        <input class="date" type="date" id="date" />
+      </div>
     </div>
 
     <nav class="tab-nav bg-white">
@@ -38,8 +38,13 @@
             <select id="lead">
               <option>Select Lead</option>
             </select>
-            <button class="bg-green-500 text-white px-2 py-2  open-modal rounded" onclick="addItem(event)"><i class="fas fa-plus"></i></button>
-            <button class="bg-red-500 text-white px-2 py-2 rounded delete-item-btn" ><i class="fas fa-trash"></i></button>
+            <!-- Inline onclick attributes removed -->
+            <button class="bg-green-500 text-white px-2 py-2 open-modal rounded">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded delete-item-btn">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
         <div class="form-group">
@@ -59,8 +64,12 @@
             <select id="cast">
               <option>Select Cast</option>
             </select>
-            <button class="bg-green-500 text-white px-2 py-2 rounded open-modal " onclick="addItem(event)"><i class="fas fa-plus"></i></button>
-            <button class="bg-red-500 text-white px-2 py-2 rounded delete-item-btn" ><i class="fas fa-trash"></i></button>
+            <button class="bg-green-500 text-white px-2 py-2 open-modal rounded">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded delete-item-btn">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
         <div class="form-group">
@@ -69,8 +78,12 @@
             <select id="religion">
               <option>Select Religion</option>
             </select>
-           <button class="bg-green-500 text-white px-2 py-2 rounded open-modal" onclick="addItem(event)"><i class="fas fa-plus"></i></button>
-            <button class="bg-red-500 text-white px-2 py-2 rounded delete-btn  delete-item-btn" ><i class="fas fa-trash"></i></button>
+            <button class="bg-green-500 text-white px-2 py-2 open-modal rounded">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="bg-red-500 text-white px-2 py-2 rounded delete-item-btn">
+              <i class="fas fa-trash"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -124,52 +137,7 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const modal = document.getElementById("modal");
-      const modalClose = document.getElementById("modal-close");
-      const modalOk = document.getElementById("modal-ok");
-      const modalInput = document.getElementById("item-name");
-      let currentInputField = null;
-
-      document.querySelectorAll(".open-modal").forEach(btn => {
-        btn.addEventListener("click", (event) => {
-          event.preventDefault();
-          currentInputField = event.target.closest(".input-icon-group").querySelector("select");
-          if (currentInputField) {
-            modalInput.value = currentInputField.value || "";
-            modal.classList.remove("hidden");
-          }
-        });
-      });
-
-      modalClose.addEventListener("click", () => modal.classList.add("hidden"));
-      modalOk.addEventListener("click", () => {
-        if (currentInputField) currentInputField.value = modalInput.value;
-        modal.classList.add("hidden");
-      });
-
-      // Delete Modal
-      const deleteModal = document.getElementById("deleteModal");
-      const deleteConfirm = document.getElementById("deleteConfirm");
-      const deleteCancel = document.getElementById("deleteCancel");
-      let selectedField = null;
-
-      document.querySelectorAll(".delete-item-btn").forEach(button => {
-        button.addEventListener("click", (event) => {
-          event.preventDefault();
-          selectedField = event.target.closest(".input-icon-group").querySelector("select");
-          if (selectedField) deleteModal.classList.remove("hidden");
-        });
-      });
-
-      deleteConfirm.addEventListener("click", () => {
-        if (selectedField) selectedField.value = "";
-        deleteModal.classList.add("hidden");
-      });
-      deleteCancel.addEventListener("click", () => deleteModal.classList.add("hidden"));
-    });
-  </script>
+  <!-- Link to external JavaScript file -->
+  <script src="customer.js"></script>
 </body>
 </html>
